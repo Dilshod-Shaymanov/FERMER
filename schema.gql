@@ -1,0 +1,284 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Admin {
+  description: String
+  email: String!
+  full_name: String!
+  hashed_password: String
+  hashed_refresh_token: String
+  id: ID!
+  is_active: Boolean
+  is_creator: Boolean
+  phone_number: String
+  tg_link: String
+}
+
+type Animal {
+  birth_date: String!
+  breed: Breed!
+  breed_id: Float!
+  gender: String!
+  healths: [Health!]!
+  id: ID!
+  species: Species!
+  species_id: Float!
+  tag_number: String!
+  weight: String!
+}
+
+type Breed {
+  animals: [Animal!]!
+  description: String!
+  id: ID!
+  name: String!
+  species: Species!
+  species_id: Float!
+}
+
+input CreateAdminDto {
+  confirm_password: String!
+  description: String
+  email: String!
+  full_name: String!
+  is_active: Boolean = true
+  is_creator: Boolean = false
+  password: String!
+  phone_number: String
+  tg_link: String
+}
+
+input CreateAnimalDto {
+  birth_date: String!
+  gender: String!
+  tag_number: String!
+  weight: String!
+}
+
+input CreateBreedDto {
+  description: String!
+  name: String!
+}
+
+input CreateDiagnosisDto {
+  description: String
+  name: String!
+}
+
+input CreateMilkingDto {
+  animal_id: Float!
+  milk_quentity: String!
+  milker_id: Float!
+  milking_date: String!
+}
+
+input CreateRoleDto {
+  description: String!
+  role_name: String!
+}
+
+input CreateSpeciesDto {
+  description: String
+  name: String!
+}
+
+input CreateTreatmentDto {
+  drug_dose: String!
+  drug_name: String!
+  treatment_duration: String!
+  treatment_method: String!
+}
+
+input CreateWorkerDto {
+  birth_date: String!
+  description: String
+  email: String!
+  experience: Float!
+  full_name: String!
+  is_active: Boolean
+  password: String!
+  phone_number: String
+  tg_link: String
+}
+
+type Diagnosis {
+  description: String
+  healths: [Health!]!
+  id: ID!
+  name: String!
+}
+
+type Health {
+  animal: Animal!
+  animal_id: Float!
+  description: String
+  diagnosis: Diagnosis!
+  diagnosis_date: String!
+  diagnosis_id: Float!
+  id: ID!
+  treatment: Treatment!
+  treatment_id: Float!
+  worker: Worker!
+  worker_id: Float!
+}
+
+type Milking {
+  id: ID!
+  milk_quantity: String!
+  milking_date: String!
+  worker: Worker!
+}
+
+type Mutation {
+  create(createBreed: CreateBreedDto!): Breed!
+  createAdmin(createAdmin: CreateAdminDto!): Admin!
+  createAnimal(createAnimal: CreateAnimalDto!): Animal!
+  createDiagnosis(createDiagnosis: CreateDiagnosisDto!): Diagnosis!
+  createMilking(createMilking: CreateMilkingDto!): Milking!
+  createRole(createRole: CreateRoleDto!): Role!
+  createSpecies(createSpecies: CreateSpeciesDto!): Species!
+  createTreatment(createTreatment: CreateTreatmentDto!): Treatment!
+  createWorker(createWorker: CreateWorkerDto!): Worker!
+  remove(id: ID!): ID!
+  removeAdmin(id: ID!): ID!
+  removeAnimal(id: ID!): ID!
+  removeDiagnosis(id: ID!): ID!
+  removeMilking(id: ID!): ID!
+  removeRole(id: ID!): ID!
+  removeSpecies(id: ID!): ID!
+  removeTreatment(id: ID!): ID!
+  removeWorker(id: ID!): ID!
+  update(id: ID!, updateBreed: UpdateBreedDto!): Breed!
+  updateAdmin(id: ID!, updateAdmin: UpdateAdminDto!): Admin!
+  updateAnimal(id: ID!, updateAnimal: UpdateAnimalDto!): Animal!
+  updateDiagnosis(id: ID!, updateDiagnosis: UpdateDiagnosisDto!): Diagnosis!
+  updateMilking(id: ID!, updateMilking: UpdateMilkingDto!): Milking!
+  updateRole(id: ID!, updateRole: UpdateRoleDto!): Role!
+  updateSpecies(id: Float!, updateSpecies: ID!): Species!
+  updateTreatment(id: ID!, updateTreatment: UpdateTreatmentDto!): Treatment!
+  updateWorker(id: ID!, updateWorker: UpdateWorkerDto!): Worker!
+}
+
+type Query {
+  findAll: [Breed!]!
+  findAllAdmin: [Admin!]!
+  findAllAnimal: [Animal!]!
+  findAllDiagnosis: [Diagnosis!]!
+  findAllMilking: [Milking!]!
+  findAllRole: [Role!]!
+  findAllSpecies: [Species!]!
+  findAllTreatment: [Treatment!]!
+  findAllWorker: [Worker!]!
+  findOne(id: ID!): Breed!
+  findOneAdmin(id: ID!): Admin!
+  findOneAnimal(id: ID!): Animal!
+  findOneDiagnosis(id: ID!): Diagnosis!
+  findOneMilking(id: ID!): Milking!
+  findOneRole(id: ID!): Role!
+  findOneSpecies(id: ID!): Species!
+  findOneTreatment(id: ID!): Treatment!
+  findOneWorker(id: ID!): Worker!
+}
+
+type Role {
+  description: String
+  id: ID!
+  role_name: String!
+  workers: [Worker!]!
+}
+
+type Species {
+  animals: [Animal!]!
+  breeds: [Breed!]!
+  description: String
+  id: ID!
+  name: String!
+}
+
+type Treatment {
+  drug_dose: String!
+  drug_name: String!
+  healths: [Health!]!
+  id: ID!
+  treatment_duration: String!
+  treatment_method: String!
+}
+
+input UpdateAdminDto {
+  confirm_password: String
+  description: String
+  email: String
+  full_name: String
+  hashed_refresh_token: String
+  is_active: Boolean
+  is_creator: Boolean
+  password: String
+  phone_number: String
+  tg_link: String
+}
+
+input UpdateAnimalDto {
+  birth_date: String
+  gender: String
+  tag_number: String
+  weight: String
+}
+
+input UpdateBreedDto {
+  description: String
+  name: String
+}
+
+input UpdateDiagnosisDto {
+  description: String
+  name: String
+}
+
+input UpdateMilkingDto {
+  animal_id: Float
+  milk_quentity: String
+  milker_id: Float
+  milking_date: String
+}
+
+input UpdateRoleDto {
+  description: String
+  role_name: String
+}
+
+input UpdateTreatmentDto {
+  drug_dose: String
+  drug_name: String
+  treatment_duration: String
+  treatment_method: String
+}
+
+input UpdateWorkerDto {
+  birth_date: String
+  description: String
+  email: String
+  experience: Float
+  full_name: String
+  is_active: Boolean
+  password: String
+  phone_number: String
+  tg_link: String
+}
+
+type Worker {
+  birth_date: String!
+  description: String
+  email: String!
+  experience: Float!
+  full_name: String!
+  hashed_password: String
+  hashed_refresh_token: String
+  healths: [Health!]!
+  id: ID!
+  is_active: Boolean!
+  milkings: [Milking!]!
+  phone_number: String
+  roles: [Role!]!
+  tg_link: String
+}
